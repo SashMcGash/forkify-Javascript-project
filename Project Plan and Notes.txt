@@ -1,0 +1,81 @@
+USER STORIES:
+
+1) As a user, I want to search for recipes, so that I can find new ideas for meals
+
+2) As a user, I want to be able to update the number of servings, so that I can cook a meal for different numbers of people
+
+3) As a user, I want to bookmark recipes, so that I can review them later
+
+4) As a user, I want to be able to create my own recipes, so that I have them all organized in the same app
+
+5) As a user, I want to be able to see my bookmarks and own recipes when I leave the app and come back later, so that I can close the app safely after cooking
+
+
+FEATURES:
+
+1)
+- Search functionality: Input field to send request to API with searched keywords
+- Display results with pagination
+- Display recipe with cooking time, servings and ingredients
+
+2) 
+- Change servings functionality: update all ingredients according to current number of servings
+
+3) 
+- Bookmarking functionality: display list of all bookmarked recipes
+
+4)
+- User can upload own recipes
+- User recipes will automatically be bookmarked
+- User can only see their own recipes, not recipes from other users
+
+5) 
+- Store bookmark data in the browser using local storage
+- On page load, read saved bookmarks from local storage and display
+
+FLOWCHART: 
+(see lucidchart.app)
+
+ARCHITECTURE:
+- Good architecture needs STRUCTURE, MAINTANABILITY and EXPANDABILITY
+- In small scale projects, we can create our own architecture (like we did in the Mapty project)
+- In larger scale projects, we can use a well-established architecture pattern like MVC, MVP, Flux, etc
+- MVC: Model View Controller, MVP: Model View Presenter
+- We can also use frameworks like React, Angular, Vue or Svelte to take care of the architecture for them
+
+COMPONENTS OF ANY ARCHITECTURE:
+- Business Logic
+  - Code that solves the actual business problem
+  - Directly related to what business does and what it needs
+  - Example: Sending messages, storing transactions, calculating taxes, etc.
+- State
+  - Essentially stores all the data about the Application
+  - Should be the "single source of truth"
+  - UI should be kept in sync with the State
+  - State management libraries exist (Redux, Mobx)
+- HTTP Library
+  - Responsible for making and receiving AJAX requests
+  - Optional but almost always necessary in real-world apps
+- Application Logic (Router)
+  - Code that is only concerned about the implementation of the application itself
+  - Handles navigation and UI events
+- Presentation Logic (UI Layer)
+  - Code that is concerned about the visible part of the application
+  - Essentially displays the application State
+
+The Model-View-Controller (MVC) Architecture:
+
+- Model
+  - Business Logic
+  - State
+  - HTTP Library
+- Controller - Bridge between model and views (which don't know about one another)
+  - Application Logic
+  - Handles UI events and dispatches tasks to Model and View
+- View (Part of the application interacting with the user)
+  - Presentation Logic
+
+1) User does some action/triggers an event (eg. click) --> 2) Controller listens for and handles user events --> 3) Controller dispatches tasks to model (asks for data) and view (updates UI) --> 4) Model queries the web (AJAX request), sends data to Controller --> 5) Controller sends data to the view --> 6) View renders the data to the user interface 
+
+NOTE: Only the Controller imports and calls functions from the Model and the View (NEVER the other way around)
+- The Model and the View are standalone. They do not import the Controller and they don't import each other
